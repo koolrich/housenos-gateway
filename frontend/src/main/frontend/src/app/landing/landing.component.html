@@ -1,0 +1,8 @@
+<mat-sidenav-container>
+  <mat-sidenav *ngIf="settings.menu == 'vertical'" [opened]="settings.sidenavIsOpened" [mode]="(settings.sidenavIsPinned) ? 'side' : 'over'" #sidenav class="sidenav mat-elevation-z6">
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header></app-header>
+  </mat-sidenav-content>
+</mat-sidenav-container>

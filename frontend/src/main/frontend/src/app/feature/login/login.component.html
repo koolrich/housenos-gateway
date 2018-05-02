@@ -1,0 +1,33 @@
+<mat-sidenav-container>
+
+  <div fxLayout="row" fxLayoutAlign="center center" class="h-100">
+  <mat-card>
+         <mat-card-content>
+           <form autocomplete="off">
+             <p>Please login to Housenos to continue</p>
+             <mat-form-field class="w-100">
+               <input matInput placeholder="User" required>
+               <!--md-error *ngIf="isFieldInvalid('userName')">
+9             Please inform your user name
+10           </md-error -->
+             </mat-form-field>
+
+             <mat-form-field class="w-100">
+               <input matInput type="password" placeholder="Password" required>
+               <!--md-error *ngIf="isFieldInvalid('userName')">
+15             Please inform your password
+16           </md-error -->
+             </mat-form-field>
+             <div fxLayout="column">
+               <mat-checkbox>Remember me</mat-checkbox>
+             </div>
+
+             <div fxLayout="column">
+               <button mat-raised-button color="primary" type="submit">Login</button>
+             </div>
+
+           </form>
+     </mat-card-content>
+  </mat-card>
+  </div>
+</mat-sidenav-container>

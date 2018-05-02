@@ -9,9 +9,9 @@ import 'hammerjs';
 
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './theme/components/header/header.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 import { AppSettings } from './app.settings';
-import { LandingComponent } from './landing/landing.component';
+import { LandingComponent } from './feature/landing/landing.component';
 
 
 @NgModule({

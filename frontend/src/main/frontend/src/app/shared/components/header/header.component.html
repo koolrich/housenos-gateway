@@ -11,5 +11,10 @@
       <a *ngIf="settings.menu == 'horizontal'" class="logo" routerLink="/" (click)="closeSubMenus()">Housenos</a>
     </div>
 
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <a mat-button routerLink="/login">Login</a>
+      <a mat-button routerLink="/register">Sign up</a>
+    </div>
+
   </div>
 </mat-toolbar>

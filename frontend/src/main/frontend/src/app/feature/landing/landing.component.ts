@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 
-import { Settings} from '../app.settings.model';
-import { AppSettings } from '../app.settings';
+import { Settings} from '../../app.settings.model';
+import { AppSettings } from '../../app.settings';
 
 @Component({
   selector: 'app-landing',

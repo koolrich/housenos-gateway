@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppSettings } from '../../../app.settings';
-import { Settings } from '../../../app.settings.model';
+import { AppSettings } from '../../../../app.settings';
+import { Settings } from '../../../../app.settings.model';
 
 @Component({
   selector: 'app-header',

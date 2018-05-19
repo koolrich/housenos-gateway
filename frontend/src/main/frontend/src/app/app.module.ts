@@ -28,6 +28,8 @@ import { UserMenuComponent } from './feature/home/menu/user-menu/user-menu.compo
 import { FullScreenComponent } from './feature/home/menu/fullscreen/fullscreen.component';
 import { SidenavComponent } from './feature/home/menu/sidenav/sidenav.component';
 import { BreadcrumbComponent } from './feature/home/menu/breadcrumb/breadcrumb.component';
+import { PropertysearchComponent } from './feature/home/propertysearch/propertysearch.component';
+import { ViewingsComponent } from './feature/home/viewings/viewings.component';
 
 
 

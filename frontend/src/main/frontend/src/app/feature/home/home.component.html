@@ -12,7 +12,9 @@
           <button fxShow="false" fxShow.gt-xs *ngIf="settings.menu == 'vertical'" mat-icon-button (click)="settings.sidenavUserBlock = !settings.sidenavUserBlock">
             <mat-icon>person</mat-icon>
           </button>
-          <a *ngIf="settings.menu == 'horizontal'" mat-raised-button color="accent" routerLink="/" (click)="closeSubMenus()" class="small-logo">G</a>
+          <a *ngIf="settings.menu == 'horizontal'" routerLink="/" (click)="closeSubMenus()" class="small-logo">
+            <img src="../../../assets/images/housenos-logo.jpg" alt="Housenos Logo" class="home-logo">
+          </a>
           <a *ngIf="settings.menu == 'horizontal'" class="logo" routerLink="/" (click)="closeSubMenus()">Housenos</a>
         </div>
         <div fxLayout="row" fxLayoutAlign="end center">

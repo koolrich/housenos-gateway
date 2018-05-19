@@ -3,6 +3,7 @@ import { ModuleWithProviders } from '@angular/core';
 
 import { LandingComponent } from './feature/landing/landing.component';
 import { HomeComponent} from './feature/home/home.component';
+import {MypropertiesModule} from './feature/home/myproperties/myproperties.module';
 
 export const routes: Routes = [
   {path : '', component : LandingComponent},
@@ -11,7 +12,10 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent, children: [
-      { path: 'dashboard', loadChildren: 'app/feature/home/dashboard/dashboard.module#DashboardModule', data: { breadcrumb: 'Dashboard' } }
+      { path: 'dashboard', loadChildren: 'app/feature/home/dashboard/dashboard.module#DashboardModule', data: { breadcrumb: 'Dashboard' } },
+      { path: 'properties/manage', loadChildren: 'app/feature/home/myproperties/myproperties.module#MypropertiesModule', data: { breadcrumb: 'My Properties' } },
+      { path: 'properties/search', loadChildren: 'app/feature/home/propertysearch/propertysearch.module#PropertySearchModule', data: { breadcrumb: 'Property Search' } },
+      { path: 'viewings', loadChildren: 'app/feature/home/viewings/viewings.module#ViewingsModule', data: { breadcrumb: 'Viewings' } },
     ]
   },
 

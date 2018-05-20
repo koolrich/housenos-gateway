@@ -1,3 +1,43 @@
-<p>
-  registration works!
-</p>
+<mat-sidenav-container>
+
+  <div fxLayout="row" fxLayoutGap="1%" fxLayoutAlign="center center" style="margin-top: 50px; margin-bottom: 20px">
+    <img src="../../../assets/images/housenos-logo.jpg" alt="Housenos Logo" class="register-logo">
+    <p class="form-brand-logo">Housenos</p>
+    <!--a href="#" class="form-brand-logo">Housenos</a-->
+
+  </div>
+
+
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+      <mat-card-content>
+        <form autocomplete="off">
+          <p style="text-align: center">Create your Housenos account</p>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="User" required>
+            <!--md-error *ngIf="isFieldInvalid('userName')">
+9             Please inform your user name
+10           </md-error -->
+          </mat-form-field>
+
+          <mat-form-field class="w-100">
+            <input matInput type="password" placeholder="Password" required>
+            <!--md-error *ngIf="isFieldInvalid('userName')">
+15             Please inform your password
+16           </md-error -->
+          </mat-form-field>
+          <div fxLayout="column">
+            <mat-checkbox>Remember me</mat-checkbox>
+          </div>
+
+          <div fxLayout="column">
+            <button mat-raised-button color="primary" type="submit">Login</button>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</mat-sidenav-container>

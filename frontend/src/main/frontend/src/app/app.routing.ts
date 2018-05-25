@@ -3,7 +3,7 @@ import { ModuleWithProviders } from '@angular/core';
 
 import { LandingComponent } from './feature/landing/landing.component';
 import { HomeComponent} from './feature/home/home.component';
-import {MypropertiesModule} from './feature/home/myproperties/myproperties.module';
+
 
 export const routes: Routes = [
   {path : '', component : LandingComponent},

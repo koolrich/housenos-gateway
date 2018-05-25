@@ -17,11 +17,18 @@ export class RegistrationComponent implements OnInit {
   constructor(public appSettings: AppSettings, public fb: FormBuilder) {
     this.settings = this.appSettings.settings;
     this.form = this.fb.group({
-      'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
       'email': [null, Validators.compose([Validators.required, emailValidator])],
       'password': ['', Validators.required],
-      'confirmPassword': ['', Validators.required]
-    },{validator: matchingPasswords('password', 'confirmPassword')});
+      'confirmPassword': ['', Validators.required],
+      'firstName': [null],
+      'lastName': [null],
+      'phone': [null],
+      'address': [null],
+      'city': [null],
+      'state': [null],
+      'userRole': [null],
+      'agreeTerms': false,
+    }, {validator: matchingPasswords('password', 'confirmPassword')});
   }
 
   ngOnInit() {

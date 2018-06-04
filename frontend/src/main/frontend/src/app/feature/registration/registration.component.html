@@ -1,32 +1,71 @@
 <mat-sidenav-container>
 
-  <div fxLayout="row" fxLayoutGap="1%" fxLayoutAlign="center center" style="margin-top: 50px; margin-bottom: 20px">
-    <img src="../../../assets/images/housenos-logo.jpg" alt="Housenos Logo" class="register-logo">
+  <div fxLayout="row" fxLayoutGap="1%" fxLayoutAlign="center center" style="margin-top: 20px; margin-bottom: 20px">
+    <!--img src="../../../assets/images/housenos-logo.jpg" alt="Housenos Logo" class="register-logo"-->
     <p class="form-brand-logo">Housenos</p>
     <!--a href="#" class="form-brand-logo">Housenos</a-->
-
   </div>
 
-
-
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <mat-card>
+  <div fxLayout="row" fxLayoutAlign="center center" class="reg-container">
+    <mat-card fxFlex="80" fxFlex.gt-sm="40" fxFlex.sm="60">
       <mat-card-content>
-        <form autocomplete="off">
+        <form novalidate [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
           <p style="text-align: center">Create your Housenos account</p>
-          <mat-form-field class="w-100">
-            <input matInput placeholder="User" required>
-            <!--md-error *ngIf="isFieldInvalid('userName')">
-9             Please inform your user name
-10           </md-error -->
+
+          <div fxFlex class="icon-left" style="margin-top: 15px">
+            <span>I am a </span>
+            <mat-radio-group formControlName="userRole" class="reg-radio-group" (change)="changeRole($event)">
+              <mat-radio-button *ngFor="let role of roles" [value]="role" class="reg-radio-button" (change)="changeRole">{{role}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <mat-icon matPrefix class="icon-sm">email</mat-icon>
+          <mat-form-field class="icon-left full-width">
+            <input matInput placeholder="Email" formControlName="email" required>
+            <mat-error *ngIf="form.controls.email.errors?.required">Please enter your email</mat-error>
+            <mat-error *ngIf="form.controls.email.hasError('invalidEmail')">Your email address is invalid</mat-error>
           </mat-form-field>
 
-          <mat-form-field class="w-100">
-            <input matInput type="password" placeholder="Password" required>
-            <!--md-error *ngIf="isFieldInvalid('userName')">
-15             Please inform your password
-16           </md-error -->
+          <mat-icon matPrefix class="icon-sm">lock</mat-icon>
+          <mat-form-field class="icon-left half-width">
+            <input matInput placeholder="Password" formControlName="password" type="password">
+            <mat-error *ngIf="form.controls.password.errors?.required">Please enter a password</mat-error>
+            <mat-error *ngIf="form.controls.password.hasError('minlength')">Password isn't long enough, minimum of 6 characters</mat-error>
           </mat-form-field>
+
+          <mat-icon matPrefix class="icon-sm">lock</mat-icon>
+          <mat-form-field class="icon-left half-width">
+            <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password">
+            <mat-error *ngIf="form.controls.confirmPassword.errors?.required">Confirm Password is required</mat-error>
+            <mat-error *ngIf="form.controls.confirmPassword.hasError('mismatchedPasswords')">Passwords do not match</mat-error>
+          </mat-form-field>
+
+          <mat-icon matPrefix class="icon-sm">person_outline</mat-icon>
+          <mat-form-field class="icon-left full-width">
+            <input matInput placeholder="First Name" formControlName="firstName" required>
+            <mat-error *ngIf="form.controls.firstName.errors?.required">Please enter your first name</mat-error>
+          </mat-form-field>
+
+          <mat-icon matPrefix class="icon-sm">person_outline</mat-icon>
+          <mat-form-field class="icon-left full-width">
+            <input matInput placeholder="Last Name" formControlName="lastName" required>
+            <mat-error *ngIf="form.controls.lastName.errors?.required">Please enter your last name</mat-error>
+          </mat-form-field>
+
+          <div [hidden]="!isAgent">
+            <mat-icon matPrefix class="icon-sm">work</mat-icon>
+            <mat-form-field class="icon-left full-width">
+              <input matInput placeholder="Business Name" formControlName="businessName" required>
+              <mat-error *ngIf="form.controls.businessName.errors?.required">Please enter your business name</mat-error>
+            </mat-form-field>
+          </div>
+
+          <mat-icon matPrefix class="icon-sm">phone</mat-icon>
+          <mat-form-field class="icon-left full-width">
+            <input matInput placeholder="Phone" formControlName="phone">
+          </mat-form-field>
+
+
           <div fxLayout="column">
             <mat-checkbox>Remember me</mat-checkbox>
           </div>

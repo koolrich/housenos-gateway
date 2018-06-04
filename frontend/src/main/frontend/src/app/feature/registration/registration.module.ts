@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../../material/material.module';
 import { RegistrationComponent} from './registration.component';
 
+import { ReferenceDataService } from '../referencedata/referencedata.service';
+
 export const routes = [
   { path: '', component: RegistrationComponent, pathMatch: 'full' }
 ];
@@ -20,6 +22,10 @@ export const routes = [
   ],
   declarations: [
     RegistrationComponent
+  ],
+
+  providers: [
+    ReferenceDataService
   ]
 })
 export class RegistrationModule { }

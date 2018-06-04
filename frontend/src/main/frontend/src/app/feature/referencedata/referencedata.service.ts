@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { STATES } from './states';
+import { STATES } from './model/states';
+import { ROLES } from './model/roles';
+
 
 @Injectable()
 export class ReferenceDataService {
@@ -9,6 +11,10 @@ export class ReferenceDataService {
 
   getStates(): string[] {
     return STATES;
+  }
+
+  getRoles(): string[] {
+    return ROLES;
   }
 
 }

@@ -11,3 +11,29 @@
 .register-logo {
   width: 50px;
 }
+
+.icon-left {
+  padding-left: 5px;
+  padding-right: 0;
+}
+
+.full-width {
+  width: 90%;
+}
+
+.half-width {
+  width: 41%;
+}
+
+.reg-radio-group {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.reg-radio-button {
+  margin: 5px;
+}
+
+.reg-container {
+  overflow: auto;
+}

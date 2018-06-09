@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 import { Settings } from '../../app.settings.model';
 import { AppSettings } from '../../app.settings';
 import { emailValidator, matchingPasswords } from '../shared/util/validators';
 
 import { ReferenceDataService } from '../referencedata/referencedata.service';
-import {MatRadioChange} from '@angular/material';
+import { MatRadioChange } from '@angular/material';
 
 
 @Component({
@@ -19,10 +20,24 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;
   roles: string[];
   isAgent = false;
+  isMobile = false;
 
-  constructor(private appSettings: AppSettings, private fb: FormBuilder, private referenceDataService: ReferenceDataService) {
+  constructor(private appSettings: AppSettings, private fb: FormBuilder, 
+    private referenceDataService: ReferenceDataService, breakpointObserver: BreakpointObserver) {
     this.settings = this.appSettings.settings;
     this.createForm();
+
+    breakpointObserver.observe([
+      Breakpoints.HandsetPortrait,
+      Breakpoints.Small
+    ]).subscribe(result => {
+      if (result.matches){
+        console.log('Detected mobile breakpoint!');
+        this.isMobile = true;
+      }else{
+        this.isMobile = false;
+      }
+    })
   }
 
   ngOnInit() {
@@ -38,15 +53,17 @@ export class RegistrationComponent implements OnInit {
       'lastName': ['', Validators.required],
       'businessName': ['', Validators.required],
       'phone': [null],
+      'address': ['', Validators.required],
+      'city': ['', Validators.required],
+      'state': ['', Validators.required],
       'userRole': 'User',
       'agreeTerms': false,
-    }, {validator: matchingPasswords('password', 'confirmPassword')});
+    }, { validator: matchingPasswords('password', 'confirmPassword') });
   }
 
   changeRole(event: MatRadioChange): void {
     console.log(event.value);
     if (event.value === this.roles[0]) {
-      console.log('User');
       this.removeAgentFields();
       this.isAgent = false;
     } else {
@@ -61,12 +78,20 @@ export class RegistrationComponent implements OnInit {
 
   removeAgentFields() {
     this.form.get('businessName').clearValidators();
+    this.form.get('address').clearValidators();
+    this.form.get('city').clearValidators();
+    this.form.get('state').clearValidators();
+
     this.form.get('businessName').updateValueAndValidity();
+    this.form.get('address').updateValueAndValidity();
+    this.form.get('city').updateValueAndValidity();
+    this.form.get('state').updateValueAndValidity();
   }
 
   addAgentFields() {
     this.form.get('businessName').setValidators([Validators.required]);
+    this.form.get('address').setValidators([Validators.required]);
+    this.form.get('city').setValidators([Validators.required]);
+    this.form.get('state').setValidators([Validators.required]);
   }
-
-
 }

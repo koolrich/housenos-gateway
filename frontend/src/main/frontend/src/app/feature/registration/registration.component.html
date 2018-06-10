@@ -51,6 +51,11 @@
               <mat-error *ngIf="form.controls.lastName.errors?.required">Please enter your last name</mat-error>
             </mat-form-field>
 
+            <mat-form-field class="full-width">
+              <mat-icon matPrefix class="icon-sm icon-left">phone</mat-icon>
+              <input matInput placeholder="Phone" formControlName="phone">
+            </mat-form-field>
+
 
             <div [hidden]="!isAgent">
               <mat-form-field class="full-width">
@@ -58,31 +63,23 @@
                 <input matInput placeholder="Business Name" formControlName="businessName" required>
                 <mat-error *ngIf="form.controls.businessName.errors?.required">Please enter your business name</mat-error>
               </mat-form-field>
-            </div>
 
-            <div>
-              <mat-form-field class="full-width">
-                <mat-icon matPrefix class="icon-sm icon-left">phone</mat-icon>
-                <input matInput placeholder="Phone" formControlName="phone">
-              </mat-form-field>
-            </div>
-
-            <div [hidden]="!isAgent">
-              <mat-icon matPrefix class="icon-sm">work</mat-icon>
               <mat-form-field class="full-width">
                 <input matInput placeholder="Address" formControlName="address" required>
                 <mat-error *ngIf="form.controls.address.errors?.required">Please enter your address</mat-error>
               </mat-form-field>
 
               <mat-form-field [ngClass]="{'half-width': !isMobile, 'full-width': isMobile }">
-                <mat-icon matPrefix class="icon-sm">work</mat-icon>
                 <input matInput placeholder="City" formControlName="city" required>
                 <mat-error *ngIf="form.controls.city.errors?.required">Please enter your city</mat-error>
               </mat-form-field>
 
               <mat-form-field [ngClass]="{'half-width': !isMobile, 'full-width': isMobile }">
-                <mat-icon matPrefix class="icon-sm">work</mat-icon>
-                <input matInput placeholder="State" formControlName="state" required>
+                <mat-select placeholder="State" formControlName="state" aria-required="true">
+                  <mat-option *ngFor="let state of states" [value]="state">
+                    {{state}}
+                  </mat-option>
+                </mat-select>
                 <mat-error *ngIf="form.controls.state.errors?.required">Please enter your state</mat-error>
               </mat-form-field>
             </div>
@@ -97,6 +94,7 @@
             </div>
 
           </form>
+
         </mat-card-content>
       </mat-card>
     </div>

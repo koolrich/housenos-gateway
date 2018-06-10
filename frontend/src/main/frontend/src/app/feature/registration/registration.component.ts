@@ -21,6 +21,7 @@ export class RegistrationComponent implements OnInit {
   roles: string[];
   isAgent = false;
   isMobile = false;
+  states: string[];
 
   constructor(private appSettings: AppSettings, private fb: FormBuilder, 
     private referenceDataService: ReferenceDataService, breakpointObserver: BreakpointObserver) {
@@ -42,6 +43,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.roles = this.referenceDataService.getRoles();
+    this.states = this.referenceDataService.getStates();
   }
 
   createForm() {
@@ -82,10 +84,7 @@ export class RegistrationComponent implements OnInit {
     this.form.get('city').clearValidators();
     this.form.get('state').clearValidators();
 
-    this.form.get('businessName').updateValueAndValidity();
-    this.form.get('address').updateValueAndValidity();
-    this.form.get('city').updateValueAndValidity();
-    this.form.get('state').updateValueAndValidity();
+    this.updateFormValidity();
   }
 
   addAgentFields() {
@@ -93,5 +92,14 @@ export class RegistrationComponent implements OnInit {
     this.form.get('address').setValidators([Validators.required]);
     this.form.get('city').setValidators([Validators.required]);
     this.form.get('state').setValidators([Validators.required]);
+
+    this.updateFormValidity();
+  }
+
+  updateFormValidity() {
+    this.form.get('businessName').updateValueAndValidity();
+    this.form.get('address').updateValueAndValidity();
+    this.form.get('city').updateValueAndValidity();
+    this.form.get('state').updateValueAndValidity();
   }
 }

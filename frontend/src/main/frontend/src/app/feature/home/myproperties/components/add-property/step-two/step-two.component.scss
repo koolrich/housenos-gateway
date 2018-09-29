@@ -1,0 +1,62 @@
+/* Display radio vertically */
+.mat-radio-group {
+    display: flex;
+    flex-flow: column nowrap;
+    
+    & .radio-option {
+      padding-bottom: 0.55em;
+      margin-left: 25px;
+      padding: .4375em 0;
+      border-top: .84375em solid transparent;
+    }
+  }
+/* Set date field position */
+  .date {
+    margin-left: 40px; 
+  }
+
+ 
+/* Display a border for the input */
+
+.mat-input-flex.mat-form-field-flex{
+  border: 0.5px solid black;
+  border-radius: 7px;
+  margin-left:0px;
+  margin-right:5px;
+}
+/* Remove the default underline */
+.mat-input-underline.mat-form-field-underline {
+  background: transparent !important; 
+  
+}
+/* Remove the underline ripple */
+.mat-input-ripple.mat-form-field-ripple{
+  background-color: transparent !important; 
+  
+}
+.mat-focused .mat-form-field-label {
+  color: #040350 !important;
+
+  }
+  
+  .mat-form-field-ripple {
+  background-color:  #040350  !important;
+  }
+
+  .form-group{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: left;
+    mat-label{
+      font-weight:normal;
+    }
+}
+.form-group > * {
+  flex: 1;
+  margin-right: 0px;
+  
+}
+
+
+

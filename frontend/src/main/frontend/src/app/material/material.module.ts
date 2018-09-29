@@ -17,6 +17,7 @@ import { MatAutocompleteModule,
   MatMenuModule,
   MatNativeDateModule,
   MatPaginatorModule,
+  MatPaginator,
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatRadioModule,
@@ -32,7 +33,7 @@ import { MatAutocompleteModule,
   MatToolbarModule,
   MatTooltipModule,
   MatStepperModule } from '@angular/material';
-
+ 
 @NgModule({
   imports: [
     CommonModule,
@@ -86,6 +87,7 @@ import { MatAutocompleteModule,
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,
+    
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,

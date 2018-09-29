@@ -1,0 +1,18 @@
+
+<div [formGroup]="pictureForm" class="address">
+     <!--picture controls-->
+     <div class="previewControls">
+     
+        <span (click)="removeFile(count)" class="circle">
+            <mat-icon>clear</mat-icon>
+        </span>
+        <span (click)="toggleShowFileDescription(count)" class="circle">
+                <mat-icon>edit</mat-icon>
+        </span>
+    </div>
+
+    <img [src]="pictureForm.get('src').value|safe" (click)="handleFileClick(count,pictureForm.get('src').value)" id="{{'file'+count}}" alt="form image caption"/>   
+    <input type="text"   formcontrolName="caption" (change)="onChanges" id="{{'caption'+count}}" #caption placeholder="enter file description" [hidden]="true">
+
+</div>
+                           

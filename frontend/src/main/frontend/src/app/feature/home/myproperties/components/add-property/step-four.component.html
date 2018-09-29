@@ -1,0 +1,20 @@
+
+     <div>
+           
+        <form [formGroup]="frmStepFour">
+            <mat-card>
+            <!--mat-form-field -->
+                <p> By submitting the form, all property details will be saved!</p>
+                    
+            <!--/mat-form-field -->
+            </mat-card>
+            <mat-card-actions align="end">
+                    <button mat-raised-button [disabled]="frmStepFour.invalid" matStepperPrevious color="warn" class="nav-btn pull-right">Back</button>
+                    <div fxFlex></div>   
+                    <button mat-raised-button [disabled]="frmStepFour.invalid" matStepperNext color="primary" (click)="onChange()" class="nav-btn pull-left">Submit</button>
+                        
+            </mat-card-actions>
+    
+        </form>
+   
+    </div>

@@ -1,0 +1,10 @@
+<!--upload picture-->
+<div>
+  
+    <input type="file"  multiple class="fileUpload" (change)="uploadFile($event,'formControl')" accept="image/*"   #fileUpload class="inputfile"/>
+       
+    <div fxFlex="60%" class="dropzone" *ngIf ="visible" (click)="fileUpload.click()" (dragover)="handleDrag($event)" (drop)="uploadFile($event,'drop')">
+      <p class="fileUpload-msg">Click or Drag and Drop files to upload</p>
+    </div>
+
+</div>

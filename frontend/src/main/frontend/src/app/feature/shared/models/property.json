@@ -1,0 +1,18 @@
+
+{
+    "status": "success",
+    "response": [
+        {
+            "id": 1,
+            "type": "Flat",
+            "title":"Kensignton Place",
+            "address": {
+                "address 1": "10, Downing Street",
+                "City": "London",
+                "State": "England"
+            },
+            "status": "Active"
+        }
+        
+    ]
+}

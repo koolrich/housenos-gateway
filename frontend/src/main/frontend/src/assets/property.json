@@ -1,0 +1,79 @@
+
+[
+        {
+            "id": 1,
+            "type": "Flat",
+            "title":"Kensignton Place",
+            "status": "Active",
+            "address": {
+                "City": "London",
+                "address1": "10, Downing Street", 
+                "State": "England"
+            }
+           
+        },
+        {
+            "id": 2,
+            "type": "Studio",
+            "title":"Whitehall Castle",
+            "status": "Active",
+            "address": {
+                "City": "Paris",
+                "address1": "9, Middlesex Street", 
+                "State": "England"
+            }
+           
+        },
+        {
+            "id": 3,
+            "type": "Duplex",
+            "title":"Whitehall Castle",
+            "status": "Active",
+            "address": {
+                "City": "Paris",
+                "address1": "9, Middlesex Street", 
+                "State": "England"
+            }
+           
+        },
+
+            {
+            "id": 4,
+            "type": "Hotel",
+            "title":"Whitehall Castle",
+            "status": "Active",
+            "address": {
+                "City": "Paris",
+                "address1": "9, Middlesex Street", 
+                "State": "England"
+            }
+           
+        },
+        {
+            "id": 5,
+            "type": "Hotel",
+            "title":"Ashcroft Mews",
+            "status": "Active",
+            "address": {
+                "City": "Paris",
+                "address1": "9, Middlesex Street", 
+                "State": "England"
+            }
+           
+        },
+        {
+            "id": 6,
+            "type": "Self Contain",
+            "title":"Whitehall Castle",
+            "status": "Active",
+            "address": {
+                "City": "Paris",
+                "address1": "9, Middlesex Street", 
+                "State": "England"
+            }
+           
+        }
+
+
+        
+]

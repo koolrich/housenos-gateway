@@ -1,0 +1,153 @@
+
+ <!-- features-->
+ <mat-card>
+        
+    <div class="housebox" [formGroup]="featureForm" >  
+            <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="start stretch" fxLayoutAlign.xs="start start" >
+                              
+                <!--div formGroupName="features"-->
+                               
+                    <div fxLayout="row" fxLayout.xs="column" >   
+                        <!--Bedroom  features-->   
+                        <div *ngFor="let feature of defaultFeatures"  [ngSwitch]="feature.name" >
+                            <div fxLayout="column"  *ngSwitchCase="'Bedroom'" class="feature-group">
+                                <div fxFlex="100%">
+                                    <mat-slide-toggle  color="primary"  checked="checked" [disabled]="false" 
+                                        md-invert aria-label="Switch toggle" (change)="onChange($event,feature.name)" >
+                                        {{feature.name}}
+                                    </mat-slide-toggle> 
+                                </div>
+                                <div class="housebox-checkboxes" fxFlex="100%">
+                                    <mat-selection-list  formControlName="bedroom"  
+                                        [disabled]="isBedroomDisabled" #Bedroom>
+                                        <mat-list-option *ngFor="let item of feature.items" 
+                                            [checkboxPosition]="'after'" 
+                                            [value]="item.value" fxFlex="100%">
+                                            <div class="center-vertically">
+                                                <mat-icon matListIcon *ngIf="item.icon!=[]">{{item.icon}}</mat-icon>
+                                                {{item.value}}
+                                            </div>
+                                        </mat-list-option>
+                                    </mat-selection-list>
+
+                                        
+                                    </div>
+                                </div>
+                            </div><!--end Bedroom-->
+                                  <!--Bathroom  features-->       
+                            <div *ngFor="let feature of defaultFeatures"  [ngSwitch]="feature.name" >
+                                <div fxLayout="column"  *ngSwitchCase="'Bathroom'" class="feature-group">
+                                    <div fxFlex="100%">
+                                        <mat-slide-toggle  color="primary"  checked="checked" [disabled]="false" 
+                                            md-invert aria-label="Switch toggle" 
+                                            (change)="onChange($event,feature.name)" >
+                                            {{feature.name}}
+                                        </mat-slide-toggle> 
+                                    </div>
+                                    <div class="housebox-checkboxes" fxFlex="100%">
+                                        <mat-selection-list formControlName="bathroom"   
+                                            (selectionChange)="featureSelected('bathroom',$event)" [disabled]="isBathroomDisabled" #Bathroom>
+                                                <mat-list-option *ngFor="let item of feature.items" [checkboxPosition]="'after'" [value]="item.value" fxFlex="100%">
+                                                <div class="center-vertically">
+                                                    <mat-icon matListIcon *ngIf="item.icon!=[]">{{item.icon}}</mat-icon>
+                                                        {{item.value}}
+                                                </div>
+                                                </mat-list-option>
+                                        </mat-selection-list>
+                                    </div>
+                                              
+                                </div>
+                            </div>  <!--end bathroom-->   
+                                   <!--Kitchen  features-->       
+                                   <div *ngFor="let feature of defaultFeatures"  [ngSwitch]="feature.name" >
+                                        <div fxLayout="column"  *ngSwitchCase="'Kitchen'" class="feature-group">
+                                            <div fxFlex="100%">
+                                                        <mat-slide-toggle  color="primary"  checked="checked" [disabled]="false" 
+                                                        md-invert aria-label="Switch toggle" (change)="onChange($event,feature.name)" >
+                                                        {{feature.name}}
+                                                    </mat-slide-toggle> 
+                                            </div>
+                                            <div class="housebox-checkboxes" fxFlex="100%">
+                                                    <mat-selection-list formControlName="kitchen"   
+                                                    (selectionChange)="featureSelected('kitchen',$event)" [disabled]="isKitchenDisabled" #Bathroom>
+                                                        <mat-list-option *ngFor="let item of feature.items" [checkboxPosition]="'after'" [value]="item.value" fxFlex="100%">
+                                                            <div class="center-vertically">
+                                                                <mat-icon matListIcon *ngIf="item.icon!=[]">{{item.icon}}</mat-icon>
+                                                                 {{item.value}}
+                                                            </div>
+                                                        </mat-list-option>
+                                                    </mat-selection-list>
+                                            </div>
+                                                      
+                                        </div>
+                                    </div>  <!--end kitchen-->   
+                                           <!--Lounge features-->       
+                            <div *ngFor="let feature of defaultFeatures"  [ngSwitch]="feature.name" >
+                                    <div fxLayout="column"  *ngSwitchCase="'Lounge'" class="feature-group">
+                                        <div fxFlex="100%">
+                                                    <mat-slide-toggle  color="primary"  checked="checked" [disabled]="false" 
+                                                    md-invert aria-label="Switch toggle" (change)="onChange($event,feature.name)" >
+                                                    {{feature.name}}
+                                                </mat-slide-toggle> 
+                                        </div>
+                                        <div class="housebox-checkboxes" fxFlex="100%">
+                                                <mat-selection-list formControlName="lounge"   
+                                                (selectionChange)="featureSelected('lounge',$event)" [disabled]="isLoungeDisabled" #Bathroom>
+                                                    <mat-list-option *ngFor="let item of feature.items" [checkboxPosition]="'after'" [value]="item.value" fxFlex="100%">
+                                                        <div class="center-vertically">
+                                                            <mat-icon matListIcon *ngIf="item.icon!=[]">{{item.icon}}</mat-icon>
+                                                             {{item.value}}
+                                                        </div>
+                                                    </mat-list-option>
+                                                </mat-selection-list>
+                                        </div>
+                                                  
+                                    </div>
+                             </div>  <!--end lounge--> 
+                             <!--extra feature-->
+                           
+                            <div fxLayout="column" >
+                                <div fxFlex="100%">
+                                       
+                                    <div formArrayName="extra">
+                                        
+                                        <h4 *ngIf="extras.length>0" class="title-label">Extra Features</h4>
+                                        <div *ngFor="let item of extras.controls; let i = index">
+                                                       
+                                            <div [formGroupName]="i" >
+                                                <mat-form-field >
+                                                    <input matInput type="text" formControlName="name" placeholder="enter a new feature"/>
+                                                        <!--button mat-button *ngIf="extras[i].dirty;" matSuffix mat-icon-button aria-label="remove" class="circle" (click)="removeExtraFeature(i)" -->
+                                                                <button mat-button matSuffix mat-icon-button aria-label="remove" class="circle" (click)="removeExtraFeature(i)" >
+                                                            <mat-icon>close</mat-icon>
+                                                        </button>
+                                                </mat-form-field>   
+                                                        
+                                            </div>
+                                                            
+                                                    
+                                        </div>
+                                        <button mat-raised-button color="primary" (click)="addExtra()" >Add Extra Feature</button>
+                                                  
+
+                                    </div>
+                                      
+                                                
+                                 <!--button-->  
+                                                    
+                                </div>   
+                        
+                            </div>      
+
+                        </div>
+                    <!--/div> <end feature FormGroup-->
+                              
+                </div>       
+                    
+                        
+                         
+                    
+     </div>
+    
+          
+    </mat-card> 

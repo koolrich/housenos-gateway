@@ -1,3 +1,25 @@
-<p>
-  myproperties works!
-</p>
+
+<div class="flex-container" fxLayout="column" layout-align="center">
+    
+<!--div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutAlign.xs="center stretch" class="container"-->
+  <!--` add new property -->
+  
+      <div fxLayout="row"   fxLayoutWrap fxLayoutGap="0.5%"    fxLayoutAlign="end start" fxLayoutAlign-sm="center stretch" >
+          <div flex="5"  flex-offset-sm="0" class="flex-p-x">
+             <button button="submit" mat-raised-button color="primary" (click)="createProperty()">Add New Property</button>
+          </div>
+      </div>
+
+      <br>
+
+
+  <!--property table-->
+      
+     <app-property-table></app-property-table>
+         
+      
+
+     
+   
+
+</div>

@@ -1,0 +1,52 @@
+
+@import '~@angular/material/theming';
+
+$primary: mat-palette($mat-blue);
+
+
+$mat-row-height: 48px;
+$mat-row-horizontal-padding: 24px;
+
+.mat-table {
+  display: block;
+}
+
+.mat-row, .mat-header-row {
+  display: flex;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  align-items: center;
+  min-height: $mat-row-height;
+  padding: 0 $mat-row-horizontal-padding;
+}
+.mat-cell, .mat-header-cell {
+    flex: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+    
+  }
+  .mat-header-row {
+    
+    background-color:mat-color($primary);
+   
+  }
+
+  .mat-header-cell {
+    color: white;
+  }
+
+  .mat-cell {
+    color: white;
+  }
+
+.mat-row {
+    min-height: $mat-row-height;
+ 
+    &.selected {
+        background: #dddddd;
+    }
+ }
+.highlight{
+    color: white;
+    background: #EEEEEE
+  }

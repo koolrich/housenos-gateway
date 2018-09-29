@@ -1,0 +1,34 @@
+
+  <form [formGroup]="listPictureForm"  >
+      
+              
+       
+               
+
+                <div formArrayName="pictures">
+                                    
+                    <div *ngFor="let item of listPictureForm.controls.pictures.controls; let i = index">     
+                        <div [formGroupName]="i" >
+                             <!--picture controls-->
+                            <div class="previewControls">
+                                <span (click)="removeFile(i)" class="circle">
+                                    <mat-icon>clear</mat-icon>
+                                </span>
+                                <span (click)="toggleShowFileDescription(i)" class="circle">
+                                        <mat-icon>edit</mat-icon>
+                                </span>
+                            </div>
+                             
+                            <img [src]="item.get('src').value|safe" (click)="handleFileClick(i,item)" id="{{'file'+i}}" alt="form image caption" />   
+                            <input type="text"   formcontrolName="caption" id="{{'caption'+i}}" #caption placeholder="enter file description" [hidden]="true">
+                           
+                           
+                        </div>  
+                    </div>
+
+                </div>
+
+        
+
+
+  </form>

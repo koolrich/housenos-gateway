@@ -23,6 +23,16 @@ a{
 .w-100{
   width: 100% !important;
 }
+.w-25{
+  width: 25% !important;
+}
+.w-35{
+  width: 35% !important;
+}
+.w-50{
+  width: 50% !important;
+}
+
 .h-100p{
   height: 100px;
 }
@@ -459,3 +469,15 @@ a{
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+/* add property form css */
+.housebox .house-legend {
+  color: #3F51B5; }
+
+.housebox .house-fieldset {
+  border-style: solid;
+  border-width: 1px;
+  height: 100%; }
+
+.housebox .housebox-checkboxes {
+  padding-left: 0px; }
+ 

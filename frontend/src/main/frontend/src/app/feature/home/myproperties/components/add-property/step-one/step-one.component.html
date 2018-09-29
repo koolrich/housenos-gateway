@@ -1,0 +1,76 @@
+<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="start stretch" 
+      fxLayoutAlign.xs="center center" >
+<mat-card>
+
+    <form [formGroup]="frmStepOne" novalidate (ngSubmit)="onSubmit(frmStepOne)">
+       
+             <mat-card> 
+                 <div fxLayout="row nowrap" fxLayout.xs="column" fxLayoutAlign="start stretch"  fxLayoutGap="1%"  >
+             
+                
+                    <mat-label fxFlex="8%">Property Name:</mat-label>
+                    <mat-form-field fxFlex="37%" fxFlex.xs="100%">
+                            <input matInput formControlName="propertyName" placeholder="Property Name" 
+                            appAutofocus>
+                    </mat-form-field>
+                   
+                    <show-errors [control]="frmStepOne.controls.propertyName"></show-errors>
+               
+                
+                    <mat-label  fxFlex="7%" >Title:</mat-label>
+                    <mat-form-field fxFlex="37%" fxFlex.xs="20%" >
+                           
+                        <input matInput formControlName="propertyTitle" placeholder="Property Title" >     
+                    </mat-form-field>  
+                    <mat-icon fxFlexAlign.xs="start start" class="inp_description" matTooltip="provide brief description for searching the Property " matTooltipShowDelay="500" matSuffix>help</mat-icon>
+                    <show-errors [control]="frmStepOne.controls.propertyTitle"></show-errors>
+                
+            </div>  
+                
+            <!--property type-->
+            <div fxLayout="row nowrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%">
+                    <mat-label  fxFlex="8%" >Property Type:</mat-label>
+               
+                
+                        
+                        <mat-form-field  fxFlex="37%"   fxFlex.xs="80%">
+                                <span *ngFor="let option of formOptions" [ngSwitch]="option.name">
+                            <mat-select  matInput name="mySelect" placeholder="Select property type"
+                            formControlName="propertyType"   *ngSwitchCase="'propertyType'"   >
+                                <mat-option *ngFor="let opt of option.options" [value]="opt.value">
+                                    {{opt.value}}
+                                </mat-option
+                                >    
+                            </mat-select>
+                        </span>
+                        </mat-form-field>
+                    
+                        <show-errors [control]="frmStepOne.controls.propertyType"></show-errors>
+                    
+
+              
+                
+                     <mat-label  fxFlex="7%" > Number Of Floor:</mat-label>
+                    <mat-form-field  fxFlex="37%">
+                        <input matInput formControlName="numberofFloor" placeholder="Number of floor" >
+                    </mat-form-field>
+                    <show-errors [control]="frmStepOne.controls.numberofFloor"></show-errors> 
+               
+
+            </div>
+        
+        <div>
+            <address formGroupName ="address"></address>
+         </div>
+            <mat-card-actions align="end">
+                    <button mat-raised-button [disabled]="frmStepOne.invalid" matStepperNext color="primary" class="nav-btn pull-right">Next</button>
+                    
+            </mat-card-actions>
+    </mat-card>  
+    
+
+        </form>
+    
+</mat-card>
+</div>
+

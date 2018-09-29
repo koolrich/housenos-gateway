@@ -1,0 +1,165 @@
+<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="start stretch" 
+      fxLayoutAlign.xs="center center" >
+    <mat-card>
+      <!--TODO layout-->
+        <form [formGroup]="frmStepTwo">
+            <mat-card>
+                <div fxLayout="row nowrap" fxLayout.xs="column" fxLayoutAlign="start stretch"  fxLayoutGap="1%"  >
+                    <mat-label  fxFlex="8%">Room Type</mat-label>  
+                    
+                 <!--room type  -->
+                 <mat-form-field  fxFlex="37%" fxFlex.xs="80%" fxFlex.xs="100%">
+                    <span *ngFor="let option of formOptions"  [ngSwitch]="option.name">
+                        <mat-select  matInput name="mySelect" placeholder="Select room type" formControlName="roomType"
+                            [value]="defaultRoomType"   *ngSwitchCase="'roomType'"  >
+                            <mat-option *ngFor="let opt of option.options" [value]="opt.value">
+                                    {{opt.value}}
+                            </mat-option>    
+                        </mat-select>
+                    </span> 
+                </mat-form-field>
+       
+                </div>
+            </mat-card>
+       
+             <!-- property features-->
+             <div>
+                <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                Property Features
+                              </mat-panel-title>
+                              <mat-panel-description>
+                                Choose available features 
+                              </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <ng-template matExpansionPanelContent>
+                                <property-feature formGroupName ="features" (save)="saveFeature($event)"></property-feature>
+                            </ng-template>  
+                </mat-expansion-panel>
+              
+            </div>
+            <mat-card>
+                <!--occupancy-->
+            <div class="form-group" >
+                <mat-label ># of Occupants</mat-label>
+                <mat-form-field *ngIf="occupancy !== [];" fxFlex="20%" fxFlex.xs="100%">
+                    <mat-select formControlName="occupancy" placeholder="maximum occupant" >
+                        <mat-option *ngFor="let occupant of maxOccupancyList" [value]="occupant.value">
+                                {{ occupant.value }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+                <!--tenure-->
+                <div class="housebox form-group" >
+                        
+                    
+                        <mat-label >Tenure</mat-label>
+                        <mat-form-field  formGroupName="tenure" *ngIf="tenureUnits !== [];" fxFlex>
+                        
+                            <mat-select formControlName="unit" placeholder="Unit" [(ngModel)]="defaultTenureUnit" fxFlex >
+                                <mat-option *ngFor="let tenure of tenureUnits" [value]="tenure.value">
+                                    {{ tenure.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field formGroupName="tenure" fxFlex>
+                            <input matInput formControlName="lenght"  type="number" placeholder="Length" >
+                            <mat-icon  matTooltip="enter unit and lenght of tenure " matTooltipShowDelay="500" matSuffix>help</mat-icon>
+                        </mat-form-field>
+  
+                </div>
+               
+                <!--price-->
+                <div class="form-group" >
+                        <label>Amount</label>
+                    <mat-form-field  >
+                            
+                        <input matInput  formControlName="price"  appCurrencyMask=false placeholder="price"  >
+                        <span matSuffix>NGN</span>
+                         <mat-icon  matTooltip="enter price or rent amount " matTooltipShowDelay="500" matSuffix>help</mat-icon>
+                    </mat-form-field>
+                </div>
+                <!--description-->
+                <div class="form-group">  
+                        <mat-label >Description</mat-label>
+                        <mat-form-field class="w-50" >
+                            <textarea matInput id='description' name='description'  matTextareaAutosize matAutosizeMinRows=5 matAutosizeMaxRows=10 formControlName="description" placeholder="Description" ></textarea>
+                        </mat-form-field>
+                        <mat-error *ngIf="frmStepTwo.get('description').hasError('required') && frmStepTwo.get('description').touched" >
+                            Property description is required
+                        </mat-error>
+                </div>
+              
+                    <mat-label>Publish Date</mat-label>
+                        <mat-radio-group  #radioGroup="matRadioGroup" formControlName="publishDate">
+                            <mat-radio-button class="radio-option" [checked]="ispublishNow" (change)="radioChange($event)"  [value]="DefaultpublishDate" >
+                                 Now
+                            </mat-radio-button>
+                            <mat-radio-button class="radio-option" id= "publishLater" name="publishLater" (change)="radioChange($event)" value=" ">
+                                 Later
+                            </mat-radio-button>
+                           
+                        </mat-radio-group>
+                       
+                        <div *ngIf ="!ispublishNow" class="date">
+                            <app-date-picker placeholder="DD/MM/YYYY" formControlName="publishDate" ></app-date-picker>                  
+                        </div>
+                        
+                    <div>
+                        <mat-card-actions align="end">
+                            <button mat-raised-button [disabled]="frmStepTwo.invalid" matStepperPrevious color="warn" class="nav-btn pull-right">Back</button>
+                            <div fxFlex></div>   
+                            <button mat-raised-button [disabled]="frmStepTwo.invalid" matStepperNext color="primary" (click)="onChange()" class="nav-btn pull-right">Next</button>         
+                        </mat-card-actions>
+                    </div>
+                </mat-card> 
+                
+                <!--pre>{{frmStepTwo.value|json}}</pre-->
+            <!--navigation button-->
+            
+           
+        </form>
+        <!--
+       
+         <br>
+         
+         <h2>Inside Form</h2>
+         <div>
+           <label>Change min value:</label>
+           <input [(ngModel)]="minValue">
+         </div>
+         <div>
+           <label>Change max value:</label>
+           <input [(ngModel)]="maxValue">
+         </div>
+         <form [formGroup]="form">
+           <p>Control value: {{form.controls.counter.value}}</p>
+           <p>Min Value: {{minValue}}</p>
+           <p>Max Value: {{maxValue}}</p>
+           <p>Form Value:</p>
+           <pre>{{ form.value | json }}</pre>
+           
+           <counter-input
+             formControlName="counter"
+             [counterRangeMax]="maxValue"
+             [counterRangeMin]="minValue"
+             [counterValue]="50"
+             ></counter-input>
+         </form>
+     
+         <p *ngIf="!form.valid">Form is invalid!</p>
+     
+         
+         <h2>Standalone</h2>
+         <counter-input
+           counterMinValue="0"
+           counterMaxValue="3"
+           [counterValue]="counterValue"></counter-input>
+
+      
+        -->
+    </mat-card>
+
+    

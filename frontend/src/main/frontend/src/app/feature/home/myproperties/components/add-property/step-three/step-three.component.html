@@ -1,0 +1,74 @@
+<mat-card>
+        
+        <form [formGroup]="frmStepThree" (ngSubmit)="onSubmit()"  >
+            <mat-card>    
+                <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="start stretch" 
+                     fxLayoutAlign.xs="start start" >
+                   
+                    <div 
+                        fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="right">
+                        <div fxFlex="55%"  >
+                                    <!--file upload-->
+                                    <upload-picture [visible]="isDefaultFile"> </upload-picture>
+                                    <!--preview picture-->
+                                    
+                            <div [hidden]=isDefaultFile>
+                                <mat-card >
+                                    <mat-card-header>
+                                                <div *ngIf="selectedFile">
+                                                    <span>{{selectedFile.caption}}</span>
+                                                 </div>
+                                    </mat-card-header>
+                                    <img mat-card-image   *ngIf ="selectedFile" [src]="selectedFile.url|        safe" />
+                                    
+                                </mat-card>
+                            </div>
+                        </div>
+                        <div fxFlex="40%" formArrayName="pictures">
+                            <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%"                    fxLayoutAlign="left" >
+                                
+                                <mat-card class="card-picture" *ngFor="let picture of pictures.controls; let i =                index" [formGroupName]="i"  >
+                                    <mat-card-header>
+                                        <mat-card-title fxLayout.gt-xs="row wrap" fxLayout.xs="column wrap">
+                                            <span fxFlex="30%" class="detail" id="{{'captions'+i}}" ></span>
+                                            <mat-icon  fxFlex="35%" (click)="openCaptionDialog(i)" >mode_edit</mat-icon>
+                                            <mat-icon fxFlex="35%" style="margin-left:0px"
+                                            (click)="removeFile(i,picture.get('url').value)" >delete</mat-icon>
+                                        </mat-card-title>
+                                    </mat-card-header>
+                                        <img mat-card-image class="img"  [src]="picture.get('url').value|safe" 
+                                             (click)="handleFileClick(i,picture.get('url').value)" id="{{'picture'+i}}" alt="image caption">
+                                      
+                                    </mat-card>
+
+                                        
+                               
+            
+                                </div>
+                            <!--file upload-->
+                        <div fxFlex>
+                                <upload-picture [visible]="selectedFile"></upload-picture>
+                            </div>
+                        </div><!--formArrayName-->
+                        
+                    </div>
+                    
+                
+                </div>
+                
+            <mat-card-actions align="end">
+                    <button mat-raised-button matStepperPrevious color="warn" class="nav-btn pull-right">Back</button>
+                    <div fxFlex></div> 
+                    <button mat-raised-button [disabled]="frmStepThree.invalid" (click)="onSubmitForms()" color="primary" class="nav-btn pull-right">Submit</button>       
+                    <div fxFlex></div> 
+                    <button mat-raised-button [disabled]="frmStepThree.invalid" (click)="preSubmitForms()" color="primary" class="nav-btn pull-right">Preview</button>       
+                    <div fxFlex></div> 
+                    <button mat-raised-button [disabled]="frmStepThree.invalid" matStepperNext color="primary" class="nav-btn pull-right">Next</button>    
+                </mat-card-actions>
+             </mat-card>
+           
+           
+           
+        </form>
+    
+</mat-card>

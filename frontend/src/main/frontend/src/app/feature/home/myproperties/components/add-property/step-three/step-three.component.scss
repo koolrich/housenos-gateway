@@ -1,0 +1,147 @@
+.clearfix{
+	overflow: auto;
+}	
+
+.dropzone {
+  position: relative;
+  height: 200px;
+  width:300px;
+  border: 2px dashed #b3b3b3;
+  border-radius: 4px;
+  background-color: #f3f3f3;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+	& .fileUpload-msg{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		color: #c3c3c3;
+		padding: 50px 10px;
+	}
+}
+
+input.fileUpload{
+	display: none;
+}
+.preview{
+	
+	display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    flex-wrap: wrap;
+	  /*
+	margin: 10px 0;
+	padding: 5px;
+	*/
+}
+.previewData {
+	/*flex-wrap: wrap;*/
+	position: relative;
+	img{
+		/*
+	width: 100px;
+	height: 100px;*/
+	width:50%;
+	height: auto;
+	display:inline-block;
+	margin: 0px;
+	vertical-align: top;
+	cursor: pointer;
+	
+	} 
+	& .previewControls{
+		display: inline-block;
+		margin: 0px 1px;
+		/* position circle btn */
+		position: absolute;
+		top: 3%;
+		left: 27%;
+		& .circle{
+			border: 2px solid transparent;
+			border-radius: 50%;
+			display: inline-block;
+			height: 37%;
+			width: 37%;
+			margin-right: 2px;
+			cursor: pointer;
+			color:  #091D86;
+				&:hover{
+				border: 2px solid  #66CD00;
+				}
+			
+		}
+		
+		
+	}
+	@at-root .selectedFile{
+		border: 2px solid #66CD00;	
+	}
+
+	
+	
+	
+}
+
+.previewDetails{
+	display: inline-block;
+    margin: 5px;
+    padding: 8px;
+}
+
+
+
+.showDesc{
+display:inline-block;
+height:30px;
+width:200px;
+font-size: 14px;
+border: 1px solid;	
+}
+
+
+.card-picture {
+	width: 25%;
+	margin-bottom: 2%;
+	margin-left: 2%;
+	& mat-card-title{
+		margin-top:0px;
+		margin-left:0px;
+	}
+	
+	& mat-icon{
+		margin-right:0px;
+		margin-bottom: 0px;
+		margin-top: 0px;
+		
+		cursor: pointer;
+	    ~ :hover {
+			border: 2px solid green($color: #000000);
+		}
+	} 
+	& img {
+		
+		cursor: pointer;
+		height:60%;
+		 margin-bottom: 0px;
+		 
+	   }
+	& span {
+		margin-right:0px;
+		margin-top:0px;
+			
+	}
+	& .detail{
+	    max-width: 50%;
+		padding: 0px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	
+  }
+ 
+  .container {
+	min-height: 100%;
+	width: 100%;
+  }
+

@@ -1,0 +1,173 @@
+
+ <!-- features-->
+ <mat-card>
+        
+        <div class="housebox" [formGroup]="featureForm" >  
+               
+                    <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="start stretch" fxLayoutAlign.xs="start start" >
+                        <!--fieldset class="house-fieldset">
+                            <legend class="house-legend">Key Features </legend-->
+                                  
+                            <div formGroupName="features">
+                                   
+                            <div fxLayout="row" fxLayout.xs="column" >   
+                               <!--Bedroom  features-->   
+                               <div *ngFor="let option of features"  [ngSwitch]="option.name" >
+                                    <div fxLayout="column"  *ngSwitchCase="'Bedroom'">
+                                        <div fxFlex="100%">
+                                                <mat-slide-toggle  color="primary"  checked="checked" [disabled]="false" 
+                                                md-invert aria-label="Switch toggle" (change)="onChange($event,option.name)" >
+                                                {{option.name}}
+                                            </mat-slide-toggle> 
+                                        </div>
+                                        <div class="housebox-checkboxes" fxFlex="100%">
+                                            <mat-selection-list  [(ngModel)]="selectedBedroomFeatures" [ngModelOptions]="{standalone: true}" 
+                                            (ngModelChange)="addBedroom(selectedBedroomFeatures)" [disabled]="isBedroomDisabled" #Bedroom>
+                                                <mat-list-option *ngFor="let item of option.items" [checkboxPosition]="'after'" [value]="item.value" fxFlex="100%">
+                                                    <div class="center-vertically">
+                                                        <mat-icon matListIcon *ngIf="item.icon!=[]">{{item.icon}}</mat-icon>
+                                                         {{item.value}}
+                                                    </div>
+                                                </mat-list-option>
+                                            </mat-selection-list>
+
+                                            
+                                        </div>
+                                              
+                                    </div>
+                                </div>   
+                            
+                                <!--Bathroom  features-->       
+                                <div *ngFor="let option of features"  [ngSwitch]="option.name" >
+                                        <div fxLayout="column"  *ngSwitchCase="'Bathroom'">
+                                            <div fxFlex="100%">
+                                                    <mat-slide-toggle  color="primary"  checked="checked" [disabled]="false" 
+                                                    md-invert aria-label="Switch toggle" (change)="onChange($event,option.name)" >
+                                                    {{option.name}}
+                                                </mat-slide-toggle> 
+                                            </div>
+                                            <div class="housebox-checkboxes" fxFlex="100%">
+                                                <mat-selection-list [(ngModel)]="selectedBathroomFeatures" [ngModelOptions]="{standalone: true}" 
+                                                (ngModelChange)="addBathroom(selectedBathroomFeatures)" [disabled]="isBathroomDisabled" #Bathroom>
+                                                    <mat-list-option *ngFor="let item of option.items" [checkboxPosition]="'after'" [value]="item.key" fxFlex="100%">
+                                                        <div class="center-vertically">
+                                                            <mat-icon matListIcon *ngIf="item.icon!=[]">{{item.icon}}</mat-icon>
+                                                             {{item.value}}
+                                                        </div>
+                                                    </mat-list-option>
+                                                </mat-selection-list>
+                                            </div>
+                                                  
+                                        </div>
+                                    </div>         
+                              <!--kitchen  features--> 
+                              
+                              <div *ngFor="let option of features"  [ngSwitch]="option.name" >
+                                    <div fxLayout="column"  *ngSwitchCase="'Kitchen'">
+                                        <div fxFlex="100%">
+                                                <mat-slide-toggle  color="primary"  checked="checked" [disabled]="false" 
+                                                md-invert aria-label="Switch toggle" (change)="onChange($event,option.name)" >
+                                                {{option.name}}
+                                            </mat-slide-toggle> 
+                                        </div>
+                                        <div class="housebox-checkboxes" fxFlex="100%">
+                                            <mat-selection-list [(ngModel)]="selectedKitchenFeatures" [ngModelOptions]="{standalone: true}" 
+                                            (ngModelChange)="addKitchen(selectedKitchenFeatures)" [disabled]="isKitchenDisabled" #Kitchen>
+                                                <mat-list-option *ngFor="let item of option.items" [checkboxPosition]="'after'" [value]="item.key" fxFlex="100%">
+                                                    <div class="center-vertically">
+                                                        <mat-icon matListIcon *ngIf="item.icon!=[]">{{item.icon}}</mat-icon>
+                                                         {{item.value}}
+                                                    </div>
+                                                </mat-list-option>
+                                            </mat-selection-list>
+                                        </div>
+                                              
+                                    </div>
+                                </div>   
+                           
+                               
+                                
+                                <!--lounge  features-->       
+                                <div *ngFor="let option of features"  [ngSwitch]="option.name" >
+                                    <div fxLayout="column"  *ngSwitchCase="'Lounge'">
+                                        <div fxFlex="100%">
+                                                <mat-slide-toggle  color="primary"  checked="checked" [disabled]="false" 
+                                                md-invert aria-label="Switch toggle" (change)="onChange($event,option.name)" >
+                                                {{option.name}}
+                                            </mat-slide-toggle> 
+                                        </div>
+                                        <div class="housebox-checkboxes" fxFlex="100">
+                                            <mat-selection-list [(ngModel)]="selectedLoungeFeatures" [ngModelOptions]="{standalone: true}" #Lounge
+                                                (ngModelChange)="addLounge(selectedKitchenFeatures)" [disabled]="isLoungeDisabled" >
+                                                    <mat-list-option *ngFor="let item of option.items" [checkboxPosition]="'after'" [value]="item.key" fxFlex="100%">
+                                                        <div class="center-vertically">
+                                                        <mat-icon matListIcon *ngIf="item.icon!=[]">{{item.icon}}</mat-icon>
+                                                        <span>{{item.value}}</span>
+                                                    </div>
+                                                        
+                                                </mat-list-option>
+                                            </mat-selection-list>
+                                        </div>
+                                         
+                                    </div>
+                                </div>  
+                           
+                                <!--extra feature-->
+                               
+                                    <div fxLayout="column" >
+                                        <div fxFlex="100%">
+                                               {{extraFeatures.value}}
+                                             <div formArrayName="extra">
+                                                    <h4 *ngIf="featureForm.controls.features.controls.extra.controls.length>0" class="title-label">Special Feature</h4>
+                                                <div *ngFor="let item of extraFeatures; let i = index">
+                                                           
+                                                           
+                                                     <div [formGroupName]="i" >
+                                                         
+                                                                <mat-form-field >
+                                                                    <input matInput type="text" formControlName="name" placeholder="enter a new feature"/>
+                                                                  
+                                                                   <button mat-button *ngIf="featureForm.controls.features.controls.extra.controls[i].dirty;" matSuffix mat-icon-button aria-label="remove" class="circle" (click)="removeExtraFeature(i)" >
+                                                                            <mat-icon>close</mat-icon>
+                                                                     </button>
+                                                                 </mat-form-field>   
+                                                            
+                                                     </div>
+                                                                
+                                                        
+                                                </div>
+                                                    <button mat-raised-button color="primary" (click)="addExtra()" >Add Extra Feature</button>
+                                                      
+
+                                             </div>
+                                                
+                                                    
+                                               <!--button-->  
+                                                        
+                                        </div>   
+                            
+                                    </div>
+                                
+                                
+                             <!--end of fill feature-->
+                              </div>
+                            </div> 
+                        <!--/fieldset-->
+                         
+                    </div>
+            </div>
+            <pre>{{featureForm.value|json}}</pre>
+            <!--
+
+            <div class="form-group" [formGroup]="activityForm">
+                    <mat-selection-list formControlName="activity" (selectionChange)="onActivitySelected($event)">
+                      <mat-list-option *ngFor="let act of activities"
+                                       [value]="act.id">
+                        {{act.name}}
+                      </mat-list-option>
+                    </mat-selection-list>
+              </div>
+            -->   
+        </mat-card> 
+
+

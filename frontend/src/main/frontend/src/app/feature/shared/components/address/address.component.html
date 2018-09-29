@@ -1,0 +1,53 @@
+<div [formGroup]="addressFormGroup" class="address">
+    
+    <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="start stretch" 
+             fxLayoutAlign.xs="center center"  >
+        <div fxLayout="row nowrap" fxLayout.xs="column" fxLayoutAlign="start center" 
+             fxLayoutGap="1%"  >     
+            <mat-label fxFlex="8%">Address 1:</mat-label>  
+            <mat-form-field  fxFlex="37%" fxFlex.xs="30%" >
+                <input matInput   formControlName="address1" placeholder="Street name">
+            </mat-form-field>
+            <show-errors [control]="addressFormGroup.controls.address1"></show-errors>
+
+            <mat-label fxFlex="8%" *ngIf="showAddress2">Address 2:</mat-label> 
+            <mat-form-field  fxFlex="37%" fxFlex.xs="30%" *ngIf="showAddress2">
+                <input matInput class="form-control" formControlName="address2" placeholder="street name2">
+            </mat-form-field>
+            
+            <show-errors [control]="addressFormGroup.controls.address2"></show-errors>
+
+            <mat-card-actions fxFlex="auto">
+                <button type="button" #address2Btn class="btn-subtitle"> 
+                    {{addressLabel}}
+                </button>
+            </mat-card-actions>
+                    
+            
+        </div> 
+        <div fxLayout="row nowrap" fxLayout.xs="column" fxLayoutWrap fxLayoutAlign="start center" 
+             fxLayoutGap="1%"  >  
+            <!--div class="state"-->
+            <mat-label fxFlex="8%">State</mat-label>
+            <mat-form-field  fxFlex="37%">
+                <mat-select  matInput ([ngModel])="state" formControlName="state" placeholder="Select state" >
+                        <mat-option  *ngFor="let state of states" [value]="state">
+                            {{state}}
+                        </mat-option>    
+                 </mat-select>
+                   
+            </mat-form-field>
+            <show-errors [control]="addressFormGroup.controls.state"></show-errors>
+                
+            <!--/div-->
+            <!--div-->
+                <mat-label fxFlex="8%" >City/Town</mat-label>
+                <mat-form-field fxFlex="37%">
+                    <input matInput formControlName="city" placeholder="City">
+                   
+                </mat-form-field>
+                <show-errors [control]="addressFormGroup.controls.city"></show-errors>
+            <!--/div-->
+        </div>
+   </div>
+</div>

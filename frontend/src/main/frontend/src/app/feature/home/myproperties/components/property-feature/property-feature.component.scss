@@ -1,0 +1,32 @@
+//add feature css
+
+.center-vertically{
+    display:flex;
+    align-items: center;
+}
+
+.circle{
+	border: 2px solid #5B93F5;
+    border-radius: 20px;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    margin: 5px;
+    cursor: pointer;
+	color: #5B93F5;
+	
+		&:hover{
+            border: 2px solid  #66CD00;
+           
+		}
+	
+}
+
+.feature-group {
+    margin-right: 100px;
+   
+  }
+.title-label{
+    color:darkblue;
+
+}

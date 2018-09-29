@@ -1,0 +1,25 @@
+<div fxLayout="row wrap"  fxLayoutAlign="start center " fxLayoutAlign.xs="start center" fxLayoutGap="1%"> 
+   <!--button mat-raised-button (click)="isLinear=false"   id="toggle-linear">Linear mode</button-->
+   <div class="container">
+  <mat-horizontal-stepper linear="isLinear" #stepper="matHorizontalStepper">
+    <mat-step [stepControl]="frmStepOne">
+      <ng-template matStepLabel>Add Property</ng-template>
+      <step-one-component  #StepOneComponent></step-one-component>
+    </mat-step>
+    <mat-step [stepControl]="frmStepTwo">
+      <ng-template matStepLabel>Add Room Details</ng-template>
+      <step-two-component #StepTwoComponent></step-two-component>
+    </mat-step>
+    <mat-step [stepControl]="frmStepThree">
+      <ng-template matStepLabel>Upload Pictures</ng-template>
+      <step-three-component #StepThreeComponent></step-three-component>
+    </mat-step>
+    <!--
+    <mat-step [stepControl]="frmStepFour">
+        <ng-template matStepLabel>Confirm</ng-template>
+        <step-four-component></step-four-component>
+      </mat-step>
+    -->
+  </mat-horizontal-stepper>
+</div>
+</div>

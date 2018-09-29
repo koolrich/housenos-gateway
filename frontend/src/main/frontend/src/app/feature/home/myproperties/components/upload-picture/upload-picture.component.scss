@@ -1,0 +1,47 @@
+.clearfix{
+	overflow: auto;
+}	
+
+.dropzone {
+  position: relative;
+  height: 200px;
+  width:300px;
+  border: 2px dashed #b3b3b3;
+  border-radius: 4px;
+  background-color: #f3f3f3;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+	& .fileUpload-msg{
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+		color: #c3c3c3;
+		padding: 50px 10px;
+	}
+}
+
+input.fileUpload{
+	display: none;
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+  cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: red;
+}
